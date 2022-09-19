@@ -1,30 +1,42 @@
-const axios = require('axios');
+const api = "https://api.exchangerate-api.com/v4/latest/USD";
 
+let amount = document.getElementById("n-amount");
+let convertBtn = document.getElementById("convert-btn");
+let fromCurrency = document.querySelector(".from");
+let toCurrency = document.querySelector(".to");
+let finalValue = document.querySelector(".finalValue");
+let finalAmount = document.getElementById("finalAmount");
+let resultFrom;
+let resultTo;
+let amountValue;
 
-const FIXER_API_KEY = 'sBn5cMR2StfNoSNP93Rmk6dvcWhAZwUl';
-const FIXER_API = `http://data.fixer.io/api/latest?access_key=${FIXER_API_KEY}`;
+fromCurrency.addEventListener('change', (event) => {
+   resultFrom = `${event.target.value}`;
+})
 
-// https://restcountries.eu
-const REST_COUNTRIES_API = `https://restcountries.com/v3.1/currency/{currency}`;
+toCurrency.addEventListener('change', (event) => {
+   resultTo = `${event.target.value}`
+});
 
-// Fetch data about Currencies
-const getExchangeRate = async (fromCurrency, toCurrency) => {
-   const { data: { rates } } = await axios.get(FIXER_API);
-   const euro = 1 / rates[fromCurrency];
-   const exchangeRate = euro * rates[toCurrency];
-   return exchangeRate; //?
+amount.addEventListener('input', updateValue);
 
+function updateValue(e) {
+   amountValue = e.target.value;
 }
 
-getExchangeRate('USD', 'AUS'); //?
+convertBtn.addEventListener("click", getResults);
 
-
-// Fetch data about countries
-const getCountries = async (currencyCode) => {
-   const response = await axios.get(`${REST_COUNTRIES_API}/${currencyCode}`);
-
+async function getResults() {
+   fetch(`${api}`)
+      .then(currency => {
+         return currency.json();
+      })
+      .then(displayResults);
 }
 
-getCountries('AUS')
-
-// Output Data
+function displayResults() {
+   let fromRate = currency.rates[resultFrom];
+   let toRate = currency.rates[resultTo];
+   finalValue.innerHTML = ((toRate / fromRate) * amountValue).toFixed(3);
+   finalAmount.style.display = "block";
+}

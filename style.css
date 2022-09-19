@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    background-color: rgb(184, 218, 237);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    background-color: aliceblue;
+    border: 5px solid aliceblue;
+    border-radius: 5px;
+    text-align: center;
+}
+
+h1 {
+    color: rgb(17, 188, 226);
+}
+
+.n-amount {
+    padding: 2rem;
+    border-radius: 5px;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.from {
+    display: flex;
+    border: none;
+    font-size: 15px;
+    border-radius: 5px;
+
+}
+
+.from-txt {
+    background-color: rgb(17, 188, 226);
+    padding: .1rem .5rem;
+    border-radius: 5px;
+    color: aliceblue;
+}
+
+.to {
+    display: flex;
+    border: none;
+    font-size: 15px;
+    border-radius: 5px;
+
+}
+
+.to-txt {
+    background-color: rgb(17, 188, 226);
+    padding: .1rem .5rem;
+    border-radius: 5px;
+    color: aliceblue;
+}
+
+button {
+    background-color: rgb(17, 188, 226);
+    margin-top: 1.5rem;
+    color: aliceblue;
+    border: 2px solid aliceblue;
+    padding: 5px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+button:hover {
+    font-weight: 600;
+}
