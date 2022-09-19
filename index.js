@@ -34,9 +34,9 @@ async function getResults() {
       .then(displayResults);
 }
 
-function displayResults() {
+function displayResults(currency) {
    let fromRate = currency.rates[resultFrom];
    let toRate = currency.rates[resultTo];
-   finalValue.innerHTML = ((toRate / fromRate) * amountValue).toFixed(3);
+   finalValue.innerHTML = ((toRate / fromRate) * amountValue).toFixed(2);
    finalAmount.style.display = "block";
 }
